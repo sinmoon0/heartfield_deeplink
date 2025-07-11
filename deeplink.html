@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Heartfield 앱 다운로드</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    text-align: center;
+    padding: 100px 20px;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+    <script>
+      const ua = navigator.userAgent.toLowerCase();
+
+      const androidLink = "https://play.google.com/store/apps/details?id=com.brandocean.heartfield&pcampaignid=web_share";
+      const iosLink = "https://apps.apple.com/kr/app/heartfield/id6503935002";
+
+      if (ua.includes("iphone") || ua.includes("ipad") || ua.includes("ipod")) {
+        window.location.href = iosLink;
+      } else if (ua.includes("android")) {
+        window.location.href = androidLink;
+      } else {
+        // PC 등 기타 환경
+        document.addEventListener("DOMContentLoaded", function () {
+          document.getElementById("msg").innerHTML = `
+            <h2>📱 QR 코드를 스마트폰으로 스캔해 주세요</h2>
+            <p>자동으로 앱스토어로 이동됩니다.</p>
+            <p><a href="${iosLink}" target="_blank">[iOS 다운로드]</a> | <a href="${androidLink}" target="_blank">[Android 다운로드]</a></p>
+          `;
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div id="msg">
+      <h2>로딩 중입니다...</h2>
+    </div>
+  </body>
+</html>
